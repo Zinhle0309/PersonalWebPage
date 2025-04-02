@@ -6,33 +6,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         nav {
             text-align: center;
             margin: 20px 0;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
             text-decoration: none;
             color: #007BFF;
             font-size: 18px;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #007BFF;
+            margin: 4px 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .hamburger:hover div {
+            background-color: #0056b3;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            font-size: 18px;
+        }
+
+        /* Hide navigation links on small screens */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #fff;
+                position: absolute;
+                top: 60px;
+                right: 10px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        #about {
+            max-width: 800px;
+            padding: 20px;
+            margin: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        p {
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            #about {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 14px;
+            }
+
+            #about {
+                padding: 10px;
+            }
+
+            p {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
     <nav>
-        <a href="home.html">Home</a>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="#about">About</a>
+        </div>
     </nav>
-    <p>Hello ! My name is Zamazizi Zinhle Mabe. I am passionate about Software Engineering. I enjoy learning new things
-        and working on exciting projects.</p>
-    <p>In my free time,
-        I like to read James Patterson novels and watch Anime. I am always looking for opportunities to grow and make a positive impact.
-    </p>
+    <div id="about">
+        <p>Hello! My name is Zamazizi Zinhle Mabe. I am passionate about Software Engineering. I enjoy learning new things
+            and working on exciting projects.</p>
+        <p>In my free time, I like to read James Patterson novels and watch Anime. I am always looking for opportunities to grow and make a positive impact.</p>
+        <img src="anime.webp" alt="Profile Picture">
     </div>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 
 </html>
